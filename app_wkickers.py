@@ -29,12 +29,13 @@ LOGO_WHITE_B64 = "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAABCGlDQ1BJQ0MgUH
 # ── COLORS ────────────────────────────────────────────────────────────────────
 ORG  = "#E4191C"
 ORG2 = "#B01015"
-BG   = "#2A2A2A"
-C1   = "#333333"
-C2   = "#444444"
-W    = "#FFFFFF"
-W2   = "#F0F0F0"
-MUT  = "#888888"
+BG   = "#F5F5F7"
+C1   = "#FFFFFF"
+C2   = "#E0E0E0"
+W    = "#1A1A1A"
+W2   = "#222222"
+MUT  = "#666666"
+SIDEBAR_BG = "#1A0305"
 
 # ── POSITION CONFIG ───────────────────────────────────────────────────────────
 POS_CONFIG = {
@@ -114,11 +115,11 @@ st.markdown(f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color:{W2};}}
-.main{{background:{BG};}} .block-container{{padding-top:2rem !important;}}
+.main{{background:{BG};}} .stApp{{background:{BG};}} .block-container{{padding-top:2rem !important;}}
 [data-testid="stHeader"]::after{{content:'';display:block;height:4px;
     background:linear-gradient(90deg,{ORG2},{ORG} 40%,#FF4A4D 60%,{ORG} 80%,{ORG2});
     position:fixed;top:0;left:0;right:0;z-index:9999;}}
-[data-testid="stSidebar"]{{background:#222222;border-right:2px solid {ORG};}}
+[data-testid="stSidebar"]{{background:#1A0305;border-right:3px solid {ORG};}}
 [data-testid="stSidebar"] label{{color:{W2} !important;font-size:11px !important;
     letter-spacing:0.08em;text-transform:uppercase;font-weight:500 !important;}}
 [data-testid="stSidebar"] p,[data-testid="stSidebar"] span{{color:{W2} !important;}}
@@ -129,23 +130,24 @@ html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color
 [role="tab"][aria-selected="true"]{{color:{ORG} !important;border-bottom:2px solid {ORG} !important;}}
 [data-baseweb="tag"]{{background:{ORG} !important;color:{W} !important;}}
 .jcard{{background:{C1};border:1px solid {C2};border-top:3px solid {ORG};
-    border-radius:8px;padding:14px 12px;text-align:center;margin-bottom:4px;}}
+    border-radius:8px;padding:14px 12px;text-align:center;margin-bottom:4px;
+    box-shadow:0 2px 8px rgba(228,25,28,0.08);}}
 .jcard .val{{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:{W};}}
 .jcard .lbl{{font-size:10px;color:{MUT};letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;}}
 .sec{{font-family:'DM Mono',monospace;font-size:10px;color:{ORG};letter-spacing:0.15em;
     text-transform:uppercase;border-bottom:1px solid {C2};padding-bottom:4px;margin-bottom:10px;}}
 .div{{height:1px;background:linear-gradient(90deg,{ORG}66,{C2});margin:10px 0;}}
-.pbar-row{{display:flex;align-items:center;padding:6px 0;border-bottom:1px solid #3A3A3A;gap:12px;}}
-.pbar-name{{font-size:12px;color:#CCC;min-width:155px;}}
-.pbar-bg{{background:#3A3A3A;border-radius:4px;height:10px;flex:1;}}
+.pbar-row{{display:flex;align-items:center;padding:6px 0;border-bottom:1px solid #E8E8E8;gap:12px;}}
+.pbar-name{{font-size:12px;color:#444;min-width:155px;}}
+.pbar-bg{{background:#E8E8E8;border-radius:4px;height:10px;flex:1;}}
 .pbar-fill{{height:10px;border-radius:4px;}}
-.pbar-info{{font-size:11px;color:#888;min-width:50px;text-align:right;font-family:DM Mono,monospace;}}
-.stTextInput input{{background:#333 !important;color:#FFF !important;border:1px solid #555 !important;}}
+.pbar-info{{font-size:11px;color:#666;min-width:50px;text-align:right;font-family:DM Mono,monospace;}}
+.stTextInput input{{background:#FFF !important;color:#1A1A1A !important;border:1px solid #CCC !important;}}
 .bm-row{{display:flex;align-items:center;gap:12px;padding:4px 0;font-size:12px;}}
-.bm-label{{color:#888;min-width:80px;}}
-.bm-val{{color:#FFF;font-family:DM Mono,monospace;min-width:40px;}}
-.bm-delta-pos{{color:#81C784;font-family:DM Mono,monospace;font-weight:600;}}
-.bm-delta-neg{{color:#EF9A9A;font-family:DM Mono,monospace;font-weight:600;}}
+.bm-label{{color:#666;min-width:80px;}}
+.bm-val{{color:#1A1A1A;font-family:DM Mono,monospace;min-width:40px;}}
+.bm-delta-pos{{color:#2E7D32;font-family:DM Mono,monospace;font-weight:600;}}
+.bm-delta-neg{{color:#C62828;font-family:DM Mono,monospace;font-weight:600;}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -635,7 +637,7 @@ def make_html_report(row, position, obv_row=None):
         clr = LAYER_COLORS_BTL[layer]
         lbl_l, lbl_c = get_btl_level(score) if pd.notna(score) else ("—","#666")
         sc_str = f"{int(round(score))}" if pd.notna(score) else "—"
-        layer_cards_html += f'''<div style="background:#1A1A1A;border:1px solid #2A2A2A;
+        layer_cards_html += f'''<div style="background:#FFFFFF;border:1px solid #E8E8E8;
             border-top:3px solid {clr};border-radius:4px;padding:14px;text-align:center;">
             <div style="font-size:9px;color:#666;letter-spacing:0.15em;
                 text-transform:uppercase;font-weight:600;">{LAYER_LABELS_BTL[layer]}</div>
@@ -739,7 +741,7 @@ def make_html_report(row, position, obv_row=None):
     return f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Scouting Report – {row.get('name','—')}</title>
 <style>
-body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#111;color:#fff;
+body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#FAFAFA;color:#1A1A1A;
     max-width:960px;margin:0 auto;}}
 .header{{background:{t_bg};color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:16px;
     display:flex;justify-content:space-between;align-items:center;}}
@@ -749,8 +751,8 @@ body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#111;color:#
     border-radius:20px;font-size:12px;font-weight:700;}}
 .layer-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}}
 .ifi-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}}
-.card{{border:1px solid #2A2A2A;border-top:3px solid #E4191C;border-radius:6px;
-    padding:12px;text-align:center;background:#1A1A1A;}}
+.card{{border:1px solid #E8E8E8;border-top:3px solid #E4191C;border-radius:6px;
+    padding:12px;text-align:center;background:#FFFFFF;}}
 .card .val{{font-size:18px;font-weight:700;}}
 .card .lbl{{font-size:9px;color:#888;text-transform:uppercase;
     letter-spacing:0.08em;margin-top:4px;}}
@@ -1201,7 +1203,7 @@ with tab1:
                         clr  = LAYER_COLORS_BTL[layer]
                         lbl_l, lbl_c = get_btl_level(score) if pd.notna(score) else ("—","#666")
                         sc_disp_l = f"{int(round(score))}" if pd.notna(score) else "—"
-                        cards_html += f'''<div style="background:#1C1C1C;border:1px solid #2A2A2A;
+                        cards_html += f'''<div style="background:#1C1C1C;border:1px solid #E8E8E8;
                             border-top:3px solid {clr};border-radius:6px;padding:12px 6px;text-align:center;">
                             <div style="font-size:9px;color:#888;letter-spacing:0.1em;
                                 text-transform:uppercase;font-weight:600;margin-bottom:3px;">
@@ -1602,7 +1604,7 @@ with tab4:
                 comp_values = [int(row_o.get(f"OBV_{c}", 0) or 0) for c in comp_labels]
                 comp_rows = "".join(f"<tr><td>{l}</td><td style='text-align:right;font-weight:700'>{v}</td></tr>" for l, v in zip(comp_labels, comp_values))
                 return f"""<!DOCTYPE html><html><head><meta charset='utf-8'>
-<style>body{{font-family:DM Sans,sans-serif;background:#1A1A1A;color:#FFF;padding:32px;max-width:700px;margin:auto}}
+<style>body{{font-family:DM Sans,sans-serif;background:#FFFFFF;color:#FFF;padding:32px;max-width:700px;margin:auto}}
 h1{{color:#E8650A;font-size:24px;margin-bottom:4px}}
 .sub{{color:#888;font-size:13px;margin-bottom:24px}}
 .section{{background:#252525;border-radius:10px;padding:16px 20px;margin-bottom:16px;border-left:3px solid #E8650A}}
