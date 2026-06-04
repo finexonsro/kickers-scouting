@@ -116,7 +116,7 @@ st.markdown(f"""
 html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color:{W2};}}
 .main{{background:{BG};}} .block-container{{padding-top:2rem !important;}}
 [data-testid="stHeader"]::after{{content:'';display:block;height:4px;
-    background:linear-gradient(90deg,{ORG2},{ORG} 40%,#FFa040 60%,{ORG} 80%,{ORG2});
+    background:linear-gradient(90deg,{ORG2},{ORG} 40%,#FF3355 60%,{ORG} 80%,{ORG2});
     position:fixed;top:0;left:0;right:0;z-index:9999;}}
 [data-testid="stSidebar"]{{background:#222222;border-right:2px solid {ORG};}}
 [data-testid="stSidebar"] label{{color:{W2} !important;font-size:11px !important;
@@ -127,7 +127,7 @@ html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color
     border:none !important;border-radius:6px !important;font-weight:700 !important;}}
 [role="tab"]{{color:{MUT} !important;font-size:13px;font-weight:500;border-bottom:2px solid transparent;}}
 [role="tab"][aria-selected="true"]{{color:{ORG} !important;border-bottom:2px solid {ORG} !important;}}
-[data-baseweb="tag"]{{background:{ORG2} !important;color:{W} !important;}}
+[data-baseweb="tag"]{{background:{ORG} !important;color:{W} !important;}}
 .jcard{{background:{C1};border:1px solid {C2};border-top:3px solid {ORG};
     border-radius:8px;padding:14px 12px;text-align:center;margin-bottom:4px;}}
 .jcard .val{{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:{W};}}
@@ -785,8 +785,8 @@ with st.sidebar:
     st.markdown(f"""
     <div style="text-align:center;padding:20px 0 14px;">
         <img src="data:image/png;base64,{LOGO_WHITE_B64}" style="width:80px;border-radius:4px;">
-        <div style="font-size:14px;font-weight:800;color:#FFF;margin-top:10px;letter-spacing:0.06em;">WÜRZBURGER KICKERS</div>
-        <div style="font-size:10px;color:#888;letter-spacing:0.18em;text-transform:uppercase;margin-top:3px;">Scouting Intelligence</div>
+        <div style="font-size:14px;font-weight:800;color:#FFF;margin-top:10px;letter-spacing:0.06em;">BTL Scouting Intelligence</div>
+        <div style="font-size:10px;color:#888;letter-spacing:0.18em;text-transform:uppercase;margin-top:3px;">Würzburger Kickers</div>
     </div>
     <div class="div"></div>
     """, unsafe_allow_html=True)
