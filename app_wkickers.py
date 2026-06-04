@@ -119,7 +119,7 @@ html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color
 [data-testid="stHeader"]::after{{content:'';display:block;height:4px;
     background:linear-gradient(90deg,{ORG2},{ORG} 40%,#FF4A4D 60%,{ORG} 80%,{ORG2});
     position:fixed;top:0;left:0;right:0;z-index:9999;}}
-[data-testid="stSidebar"]{{background:#525252;border-right:3px solid {ORG};}}
+[data-testid="stSidebar"]{{background:#333333;border-right:3px solid {ORG};}}
 [data-testid="stSidebar"] label{{color:{W2} !important;font-size:11px !important;
     letter-spacing:0.08em;text-transform:uppercase;font-weight:500 !important;}}
 [data-testid="stSidebar"] p,[data-testid="stSidebar"] span{{color:{W2} !important;}}
