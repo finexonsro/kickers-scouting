@@ -721,7 +721,7 @@ def make_html_report(row, position, obv_row=None):
             comp_rows_html += f"""<tr>
                 <td style="padding:5px 8px;font-size:12px;">{de}</td>
                 <td style="padding:5px 8px;width:180px;">
-                    <div style="background:#444;border-radius:4px;height:8px;">
+                    <div style="background:#555;border-radius:4px;height:8px;">
                         <div style="background:{obv_color(v)};width:{bar_pct:.0f}%;height:8px;border-radius:4px;"></div>
                     </div>
                 </td>
@@ -1150,7 +1150,7 @@ with tab1:
 
                 st.markdown("---")
                 st.markdown(f"""
-                <div style="background:#525252;border:1px solid #444;border-left:4px solid {ORG};
+                <div style="background:{C1};border:1px solid {C2};border-left:4px solid {ORG};
                             border-radius:8px;padding:16px 20px;margin-bottom:16px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;">
                         <div>
@@ -1218,7 +1218,7 @@ with tab1:
                     if has_physical:
                         st.markdown(f'<div style="font-size:10px;color:{ORG};letter-spacing:0.15em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">⚡ Physical Breakdown</div>', unsafe_allow_html=True)
                         phys_html = render_physical_bars(row)
-                        st.markdown(f'<div style="background:#525252;border:1px solid #444;border-radius:8px;padding:14px 16px;">{phys_html}</div>', unsafe_allow_html=True)
+                        st.markdown(f'<div style="background:{C1};border:1px solid {C2};border-radius:8px;padding:14px 16px;">{phys_html}</div>', unsafe_allow_html=True)
                     else:
                         st.info("⚡ Kein Physical Score verfügbar")
 
@@ -1281,7 +1281,7 @@ with tab2:
                 markt = df_v["markt"].iloc[0] if "markt" in df_v.columns else "DACH"
 
                 st.markdown(f"""
-                <div style="background:#525252;border:1px solid #444;border-left:4px solid {ORG};
+                <div style="background:{C1};border:1px solid {C2};border-left:4px solid {ORG};
                             border-radius:8px;padding:12px 16px;margin-bottom:12px;">
                     <span style="font-size:16px;font-weight:700;color:#FFF;">{verein}</span>
                     <span style="font-size:12px;color:#888;margin-left:12px;">{liga} · {markt} · {len(df_v)} Spieler</span>
@@ -1580,7 +1580,7 @@ with tab4:
             comp_colors = [ORG if v >= 60 else "#64B5F6" if v >= 50 else "#888" if v >= 40 else "#444" for v in comp_values]
             fig_bar = go.Figure(go.Bar(x=comp_labels_de, y=comp_values, marker_color=comp_colors,
                 text=comp_values, textposition="outside", textfont=dict(color="#FFF", size=12)))
-            fig_bar.update_layout(height=300,margin=dict(l=20,r=20,t=20,b=40),paper_bgcolor=BG,plot_bgcolor="#333",
+            fig_bar.update_layout(height=300,margin=dict(l=20,r=20,t=20,b=40),paper_bgcolor=C1,plot_bgcolor=C1,
                 font_family="DM Sans",font_color="#AAA",yaxis=dict(range=[0,85],gridcolor="#3A3A3A",zeroline=False,dtick=20),
                 xaxis=dict(gridcolor="rgba(0,0,0,0)"),showlegend=False)
             st.plotly_chart(fig_bar, use_container_width=True)
@@ -1697,7 +1697,7 @@ with tab5:
                     hover_name="name",
                     hover_data={c:True for c in ["team","liga","position","age","OBV_Total Impact","OBV_Impact per 90","pct_score"] if c in pdf_obv.columns},
                     template="plotly_dark", height=520)
-                fig_sc.update_layout(paper_bgcolor=BG,plot_bgcolor="#333",font_family="DM Sans",font_color="#DDD",
+                fig_sc.update_layout(paper_bgcolor=C1,plot_bgcolor=C1,font_family="DM Sans",font_color="#DDD",
                     xaxis=dict(gridcolor="#3A3A3A",zeroline=False,color="#AAA"),
                     yaxis=dict(gridcolor="#3A3A3A",zeroline=False,color="#AAA"),
                     legend=dict(bgcolor="#333333",bordercolor="#444",borderwidth=1,
