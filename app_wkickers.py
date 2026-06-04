@@ -547,7 +547,7 @@ def render_physical_bars(row):
     # Skip the bm section entirely
 
     html += f"""
-    <div style="margin-top:10px;padding-top:8px;border-top:1px solid #3A3A3A;">
+    <div style="margin-top:10px;padding-top:8px;border-top:1px solid {C2};">
         <div style="font-size:12px;color:#888;margin-bottom:4px;">
             PSV-99: <b style="color:#FFF;">{psv:.2f} km/h</b>
             <span style="color:{sf_c};margin-left:8px;font-weight:700;">{sf}</span>
@@ -598,15 +598,15 @@ def make_radar(row, position):
         name=f"IFI · {em}",
         hovertemplate="%{theta}: <b>%{r:.0f}%</b><extra></extra>"))
     fig.update_layout(
-        polar=dict(bgcolor="#2A2A2A",
+        polar=dict(bgcolor=C1,
             radialaxis=dict(visible=True, range=[0,100],
                 tickvals=[25,50,75,100], ticktext=["25%","50%","75%","100%"],
-                tickfont=dict(color="#666", size=9), gridcolor="#3A3A3A", linecolor="#3A3A3A"),
+                tickfont=dict(color="#666", size=9), gridcolor=C2, linecolor=C2),
             angularaxis=dict(tickfont=dict(color="#DDD", size=10),
-                gridcolor="#3A3A3A", linecolor="#444", direction="clockwise")),
+                gridcolor=C2, linecolor=C2, direction="clockwise")),
         paper_bgcolor=BG, font=dict(family="DM Sans", color="#CCC"),
         showlegend=True,
-        legend=dict(bgcolor="#333", bordercolor="#444", borderwidth=1,
+        legend=dict(bgcolor=C1, bordercolor=C2, borderwidth=1,
             font=dict(color="#888", size=10), orientation="h", y=-0.15, x=0.5, xanchor="center"),
         margin=dict(l=60, r=60, t=50, b=60), height=560,
         title=dict(text=f"IFI Radar · {em} · {row.get('pct_score',50):.0f}. Perzentil",
@@ -636,7 +636,7 @@ def make_html_report(row, position, obv_row=None):
         clr = LAYER_COLORS_BTL[layer]
         lbl_l, lbl_c = get_btl_level(score) if pd.notna(score) else ("—","#666")
         sc_str = f"{int(round(score))}" if pd.notna(score) else "—"
-        layer_cards_html += f'''<div style="background:#1A1A1A;border:1px solid #2A2A2A;
+        layer_cards_html += f'''<div style="background:{C1};border:1px solid {C2};
             border-top:3px solid {clr};border-radius:4px;padding:14px;text-align:center;">
             <div style="font-size:9px;color:#666;letter-spacing:0.15em;
                 text-transform:uppercase;font-weight:600;">{LAYER_LABELS_BTL[layer]}</div>
@@ -721,7 +721,7 @@ def make_html_report(row, position, obv_row=None):
             comp_rows_html += f"""<tr>
                 <td style="padding:5px 8px;font-size:12px;">{de}</td>
                 <td style="padding:5px 8px;width:180px;">
-                    <div style="background:#2A2A2A;border-radius:4px;height:8px;">
+                    <div style="background:#444;border-radius:4px;height:8px;">
                         <div style="background:{obv_color(v)};width:{bar_pct:.0f}%;height:8px;border-radius:4px;"></div>
                     </div>
                 </td>
@@ -740,7 +740,7 @@ def make_html_report(row, position, obv_row=None):
     return f"""<!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Scouting Report – {row.get('name','—')}</title>
 <style>
-body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#111;color:#fff;
+body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#2A2A2A;color:#fff;
     max-width:960px;margin:0 auto;}}
 .header{{background:{t_bg};color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:16px;
     display:flex;justify-content:space-between;align-items:center;}}
@@ -750,8 +750,8 @@ body{{font-family:Arial,sans-serif;margin:0;padding:24px;background:#111;color:#
     border-radius:20px;font-size:12px;font-weight:700;}}
 .layer-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}}
 .ifi-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}}
-.card{{border:1px solid #2A2A2A;border-top:3px solid #E4191C;border-radius:6px;
-    padding:12px;text-align:center;background:#1A1A1A;}}
+.card{{border:1px solid #444;border-top:3px solid #E4191C;border-radius:6px;
+    padding:12px;text-align:center;background:#333333;}}
 .card .val{{font-size:18px;font-weight:700;}}
 .card .lbl{{font-size:9px;color:#888;text-transform:uppercase;
     letter-spacing:0.08em;margin-top:4px;}}
@@ -1202,7 +1202,7 @@ with tab1:
                         clr  = LAYER_COLORS_BTL[layer]
                         lbl_l, lbl_c = get_btl_level(score) if pd.notna(score) else ("—","#666")
                         sc_disp_l = f"{int(round(score))}" if pd.notna(score) else "—"
-                        cards_html += f'''<div style="background:#1C1C1C;border:1px solid #2A2A2A;
+                        cards_html += f'''<div style="background:#333333;border:1px solid #444;
                             border-top:3px solid {clr};border-radius:6px;padding:12px 6px;text-align:center;">
                             <div style="font-size:9px;color:#888;letter-spacing:0.1em;
                                 text-transform:uppercase;font-weight:600;margin-bottom:3px;">
@@ -1551,9 +1551,9 @@ with tab4:
                     gauge={
                         "axis":{"range":[20,80],"tickmode":"array","tickvals":[20,40,60,80],"tickfont":{"color":"#666","size":10}},
                         "bar":{"color":color,"thickness":0.45},
-                        "bgcolor":"#2A2A2A",
+                        "bgcolor":"#333333",
                         "borderwidth":0,
-                        "steps":[{"range":[20,50],"color":"#2A2A2A"},{"range":[50,65],"color":"#525252"},{"range":[65,80],"color":"#333333"}],
+                        "steps":[{"range":[20,50],"color":"#333333"},{"range":[50,65],"color":"#333333"},{"range":[65,80],"color":"#333333"}],
                     },
                     title={"text":label,"font":{"size":13,"color":"#AAA"}},
                 ))
@@ -1603,10 +1603,10 @@ with tab4:
                 comp_values = [int(row_o.get(f"OBV_{c}", 0) or 0) for c in comp_labels]
                 comp_rows = "".join(f"<tr><td>{l}</td><td style='text-align:right;font-weight:700'>{v}</td></tr>" for l, v in zip(comp_labels, comp_values))
                 return f"""<!DOCTYPE html><html><head><meta charset='utf-8'>
-<style>body{{font-family:DM Sans,sans-serif;background:#1A1A1A;color:#FFF;padding:32px;max-width:700px;margin:auto}}
+<style>body{{font-family:DM Sans,sans-serif;background:#333333;color:#FFF;padding:32px;max-width:700px;margin:auto}}
 h1{{color:#E8650A;font-size:24px;margin-bottom:4px}}
 .sub{{color:#888;font-size:13px;margin-bottom:24px}}
-.section{{background:#252525;border-radius:10px;padding:16px 20px;margin-bottom:16px;border-left:3px solid #E8650A}}
+.section{{background:#444;border-radius:10px;padding:16px 20px;margin-bottom:16px;border-left:3px solid #E4191C}}
 h2{{color:#E8650A;font-size:13px;font-weight:700;letter-spacing:.1em;margin:0 0 12px}}
 table{{width:100%;border-collapse:collapse}}td{{padding:6px 0;border-bottom:1px solid #333;font-size:13px;color:#CCC}}
 td:last-child{{color:#FFF}}.big{{font-size:36px;font-weight:700;color:#FFF}}.lbl{{font-size:11px;color:#888}}
@@ -1700,7 +1700,7 @@ with tab5:
                 fig_sc.update_layout(paper_bgcolor=BG,plot_bgcolor="#333",font_family="DM Sans",font_color="#DDD",
                     xaxis=dict(gridcolor="#3A3A3A",zeroline=False,color="#AAA"),
                     yaxis=dict(gridcolor="#3A3A3A",zeroline=False,color="#AAA"),
-                    legend=dict(bgcolor="#2A2A2A",bordercolor="#555",borderwidth=1,
+                    legend=dict(bgcolor="#333333",bordercolor="#444",borderwidth=1,
                                 font=dict(color="#FFF",size=12),title_font=dict(color="#FFF")),
                     margin=dict(l=40,r=20,t=40,b=40))
                 if sz_vals is None:
