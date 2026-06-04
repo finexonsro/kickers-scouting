@@ -119,7 +119,7 @@ html,body,[class*="css"]{{font-family:'DM Sans',sans-serif;background:{BG};color
 [data-testid="stHeader"]::after{{content:'';display:block;height:4px;
     background:linear-gradient(90deg,{ORG2},{ORG} 40%,#FF4A4D 60%,{ORG} 80%,{ORG2});
     position:fixed;top:0;left:0;right:0;z-index:9999;}}
-[data-testid="stSidebar"]{{background:#222222;border-right:3px solid {ORG};}}
+[data-testid="stSidebar"]{{background:#383838;border-right:3px solid {ORG};}}
 [data-testid="stSidebar"] label{{color:{W2} !important;font-size:11px !important;
     letter-spacing:0.08em;text-transform:uppercase;font-weight:500 !important;}}
 [data-testid="stSidebar"] p,[data-testid="stSidebar"] span{{color:{W2} !important;}}
@@ -1150,7 +1150,7 @@ with tab1:
 
                 st.markdown("---")
                 st.markdown(f"""
-                <div style="background:#2E2E2E;border:1px solid #444;border-left:4px solid {ORG};
+                <div style="background:#383838;border:1px solid #444;border-left:4px solid {ORG};
                             border-radius:8px;padding:16px 20px;margin-bottom:16px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;">
                         <div>
@@ -1218,7 +1218,7 @@ with tab1:
                     if has_physical:
                         st.markdown(f'<div style="font-size:10px;color:{ORG};letter-spacing:0.15em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">⚡ Physical Breakdown</div>', unsafe_allow_html=True)
                         phys_html = render_physical_bars(row)
-                        st.markdown(f'<div style="background:#2E2E2E;border:1px solid #444;border-radius:8px;padding:14px 16px;">{phys_html}</div>', unsafe_allow_html=True)
+                        st.markdown(f'<div style="background:#383838;border:1px solid #444;border-radius:8px;padding:14px 16px;">{phys_html}</div>', unsafe_allow_html=True)
                     else:
                         st.info("⚡ Kein Physical Score verfügbar")
 
@@ -1281,7 +1281,7 @@ with tab2:
                 markt = df_v["markt"].iloc[0] if "markt" in df_v.columns else "DACH"
 
                 st.markdown(f"""
-                <div style="background:#2E2E2E;border:1px solid #444;border-left:4px solid {ORG};
+                <div style="background:#383838;border:1px solid #444;border-left:4px solid {ORG};
                             border-radius:8px;padding:12px 16px;margin-bottom:12px;">
                     <span style="font-size:16px;font-weight:700;color:#FFF;">{verein}</span>
                     <span style="font-size:12px;color:#888;margin-left:12px;">{liga} · {markt} · {len(df_v)} Spieler</span>
@@ -1553,7 +1553,7 @@ with tab4:
                         "bar":{"color":color,"thickness":0.45},
                         "bgcolor":"#2A2A2A",
                         "borderwidth":0,
-                        "steps":[{"range":[20,50],"color":"#2A2A2A"},{"range":[50,65],"color":"#2E2E2E"},{"range":[65,80],"color":"#333333"}],
+                        "steps":[{"range":[20,50],"color":"#2A2A2A"},{"range":[50,65],"color":"#383838"},{"range":[65,80],"color":"#333333"}],
                     },
                     title={"text":label,"font":{"size":13,"color":"#AAA"}},
                 ))
